@@ -5,7 +5,7 @@ metadata:
   labels:
     app: j-master
 spec:
-  type: Nodeport
+  type: NodePort
   ports:
   - port: 1099
     targetPort: 30000
