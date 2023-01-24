@@ -34,7 +34,7 @@ spec:
       terminationGracePeriodSeconds: 50
       containers:
       - name: j-master
-        image: saikrishnaoduru/jmeter
+        image: saikrishnaoduru/jmeter:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 1099
