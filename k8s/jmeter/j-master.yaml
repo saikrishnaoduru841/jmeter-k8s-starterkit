@@ -31,11 +31,22 @@ spec:
       labels:
         app: j-master
     spec:
-      terminationGracePeriodSeconds: 50
+      terminationGracePeriodSeconds: 300
       containers:
       - name: j-master
         image: saikrishnaoduru/jmeter:latest
         imagePullPolicy: Always
+        args:
+        - /bin/sh
+        - -c
+        - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 1099
           name: j-master
